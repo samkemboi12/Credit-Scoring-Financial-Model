@@ -46,12 +46,14 @@ Target is 0 (Non Defaulters) = 91.9 %
 ## Explore Employment Risk Patterns
 ### Is there a Relationship between years of Employment and Loan Default
 <img width="615" height="358" alt="download" src="https://github.com/user-attachments/assets/19722391-3a49-417e-bda4-62f337b9a6e2" />
+
 Yes, Analysis shows that applicants with longer employment history have lower default risk.
 Shorter employment duration is associated with higher probability of default, indicating that job stability is an important factor in credit risk assessment.”
 
 ## Explore Age Risk Patterns
 ### Is there a Relationship between Age of customers and Loan Default
 <img width="615" height="358" alt="download" src="https://github.com/user-attachments/assets/75048d7c-92b1-4501-9bc7-04ef161e08cd" />
+
 Analysis shows that default risk decreases with age.
 <br>Younger borrowers are more likely to default, while older borrowers tend to be more financially stable and reliable in meeting credit obligations.
 
