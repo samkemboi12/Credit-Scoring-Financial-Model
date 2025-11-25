@@ -1,2 +1,39 @@
 # Credit-Scoring-Financial-Model
 This is a project that deals with risk management in financial institutions regarding lending to its customers. It develops a credit scoring system that predicts whether a customer will default a loan. It ensures profitability since banks make informed lending decisions improving profitability and reducing financial losses.
+Business Understanding
+Financial institutions, such as banks and microfinance organizations, regularly face the challenge of lending money to customers while minimizing the risk of loan defaults. Every loan carries a certain level of risk: some customers repay on time, while others may default due to financial constraints, poor credit history, or unforeseen circumstances. Efficiently managing this risk is critical for the profitability and sustainability of the institution. Credit scoring is all about assessing the creditworthiness of loan applicants. The goal is to predict the likelihood that a customer or a business will default on a loan so that the bank can make informed lending decisions.
+
+# Business Problem
+Evercrest Bank has a pool of customers individual and Small and Medium sized Enterprises (SMEs) applying for loans.
+Not all applicants have the same repayment capacity.
+Evercrest Bank uses traditional loan approval process which relies on manual assessments, subjective judgment, or incomplete evaluation of a customer’s financial history.
+The process is inconsistent, leading to Lending to high risk customers welcoming losses and rejecting low risk customers which leads to losing business opportunities
+
+We need a data driven model that predicts the probability of default for each applicant either as an individual or SMEs.
+
+# Project Objective
+The main objective of this project is to develop a data-driven credit scoring system that predicts the likelihood of a customer defaulting on a loan. This model will help the bank make informed, consistent, and fair lending decisions, ultimately improving risk management and profitability.
+This the projects matters because of the following reasons.
+
+Risk management- Reduce financial losses from loan defaults.
+
+Regulatory compliance -Banks must comply with financial regulations on lending and risk.
+
+Profitability - Proper credit scoring allows offering loans to low-risk customers while charging appropriate interest for higher risk ones.
+
+Customer fairness - Ensures decisions are data driven, consistent, and unbiased.
+
+# Key Deliverables:
+Data understanding and cleaning: Understand data fields, handle missing values, and correct inconsistencies.
+
+Feature engineering: Create meaningful variables such as Debt To Income ratio, Develop Risk Score, Rejected Contract History.Credit-to-Annuity Ratio,Employment Stability,Default Rate by Income Source and Occupation
+
+Exploratory analysis: Identify factors that influence default risk,such as occupation, age, employment, DTI, default history and so on
+
+Model development: Build ML models e.g., LightGBM, Random Forest) to predict defaults.
+
+Model evaluation: Use metrics like AUC-ROC, KS, Classification report and confusion matrix.
+
+Business insights: Explain which factors most affect default risk.
+
+Deployment-ready solution: Provide predictions or scorecards for new applicants.
