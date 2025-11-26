@@ -57,4 +57,28 @@ Shorter employment duration is associated with higher probability of default, in
 Analysis shows that default risk decreases with age.
 <br>Younger borrowers are more likely to default, while older borrowers tend to be more financially stable and reliable in meeting credit obligations.
 
+## Engineered Risk score
+Created a risk score to estimate how risky a client is. First, I looked at key indicators like **debt levels**, **loan size compared to income**, **employment stability**, and **past loan rejections**. 
+<br>For each indicator, I marked whether it was risky or not. 
+<br>Then, I added up these marks to get a total risk score. 
+<br>Finally, I converted this score into a simple risk level category—like ;
+<br>GOOD,
+<br>MEDIUM, 
+<br>HIGH, 
+<br>VERY HIGH, 
+<br>or EXTREME ,so it’s easy to understand and use in decisions.
+<br>For example, a client with low Debt to Income ratio (DIT), stable employment, and no past rejections would be classified as GOOD risk. On the other hand, a client with high DIT, low job stability, and several past rejections would be EXTREME risk.
+
+
+I have created a function called  calculate_risk_level  in the notebook to test the risk score
+## Example 1
+print(calculate_risk_level(dti=0.15, credit_annuity=0.2, employment=10, rejections=0))
+### Output: 'GOOD'
+
+## Example 2
+print(calculate_risk_level(dti=0.35, credit_annuity=0.25, employment=1, rejections=9))
+### Output: 'EXTREME'
+
+
+
 
