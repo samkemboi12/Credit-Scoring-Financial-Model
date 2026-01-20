@@ -1,12 +1,15 @@
 # Credit-Scoring-Financial-Model
 This is a project that deals with risk management in financial institutions regarding lending to its customers. It develops a credit scoring system that predicts whether a customer will default a loan. It ensures profitability since banks make informed lending decisions improving profitability and reducing financial losses.
-Business Understanding
+
+This project covers data preprocessing, feature engineering, model training, hyperparameter tuning, ensemble learning, evaluation, and live deployment via Streamlit.
+
+# Business Understanding
 Financial institutions, such as banks and microfinance organizations, regularly face the challenge of lending money to customers while minimizing the risk of loan defaults. Every loan carries a certain level of risk: some customers repay on time, while others may default due to financial constraints, poor credit history, or unforeseen circumstances. Efficiently managing this risk is critical for the profitability and sustainability of the institution. Credit scoring is all about assessing the creditworthiness of loan applicants. The goal is to predict the likelihood that a customer or a business will default on a loan so that the bank can make informed lending decisions.
 
 # Business Problem
-Evercrest Bank has a pool of customers individual and Small and Medium sized Enterprises (SMEs) applying for loans.
+Wonders2015 Finance Solutions  has a pool of customers individual and Small and Medium sized Enterprises (SMEs) applying for loans.
 Not all applicants have the same repayment capacity.
-Evercrest Bank uses traditional loan approval process which relies on manual assessments, subjective judgment, or incomplete evaluation of a customer’s financial history.
+Wonders2015 Finance uses traditional loan approval process which relies on manual assessments, subjective judgment, or incomplete evaluation of a customer’s financial history.
 The process is inconsistent, leading to Lending to high risk customers welcoming losses and rejecting low risk customers which leads to losing business opportunities
 
 We need a data driven model that predicts the probability of default for each applicant either as an individual or SMEs.
@@ -14,6 +17,8 @@ We need a data driven model that predicts the probability of default for each ap
 # Project Objective
 The main objective of this project is to develop a data-driven credit scoring system that predicts the likelihood of a customer defaulting on a loan. This model will help the bank make informed, consistent, and fair lending decisions, ultimately improving risk management and profitability.
 This the projects matters because of the following reasons.
+
+Improve default prediction accuracy.
 
 Risk management- Reduce financial losses from loan defaults.
 
@@ -23,62 +28,105 @@ Profitability - Proper credit scoring allows offering loans to low-risk customer
 
 Customer fairness - Ensures decisions are data driven, consistent, and unbiased.
 
+Provide interpretable risk tiers for business users
+
 # Key Deliverables:
 Data understanding and cleaning: Understand data fields, handle missing values, and correct inconsistencies.
 
-Feature engineering: Create meaningful variables such as Debt To Income ratio, Develop Risk Score, Rejected Contract History.Credit-to-Annuity Ratio,Employment Stability,Default Rate by Income Source and Occupation
+Feature engineering: Create meaningful variables such as Financial Ratios and Transformations and Temporal Features from dates
 
-Exploratory analysis: Identify factors that influence default risk,such as occupation, age, employment, DTI, default history and so on
+Exploratory analysis: Identify factors that influence default risk,such as loan type, default history and so on
 
-Model development: Build ML models e.g., LightGBM, Random Forest) to predict defaults.
+Model development: Build ML models, LightGBM, XGBoost and Catboost to predict defaults.
 
-Model evaluation: Use metrics like AUC-ROC, KS, Classification report and confusion matrix.
+Model evaluation: Use metrics F1 Score, AUC-ROC, KS, Classification report and confusion matrix.
 
 Business insights: Explain which factors most affect default risk.
 
 Deployment-ready solution: Provide predictions or scorecards for new applicants.
 
+Note that , this project addresses a highly imbalanced dataset, applies group-aware cross-validation, and deploys a real-time scoring application for individual customers
+
 # Explonatory Data Analysis
 ## Distribution of Target
-Target is 0 (Non Defaulters) = 91.9 %
-          1 (Defaulters ) = 8.1 %
-          <img width="245" height="231" alt="download" src="https://github.com/user-attachments/assets/daf5024e-8ca3-4416-b5b9-735abe96d811" />
-## Explore Employment Risk Patterns
-### Is there a Relationship between years of Employment and Loan Default
-<img width="615" height="358" alt="download" src="https://github.com/user-attachments/assets/19722391-3a49-417e-bda4-62f337b9a6e2" />
 
-Yes, Analysis shows that applicants with longer employment history have lower default risk.
-Shorter employment duration is associated with higher probability of default, indicating that job stability is an important factor in credit risk assessment.”
+<img width="513" height="333" alt="download" src="https://github.com/user-attachments/assets/fde8f36b-9d86-4168-a7db-3bec1703ec54" />
 
-## Explore Age Risk Patterns
-### Is there a Relationship between Age of customers and Loan Default
-<img width="615" height="358" alt="download" src="https://github.com/user-attachments/assets/75048d7c-92b1-4501-9bc7-04ef161e08cd" />
+From the plot and percentages, it is clear that the dataset is highly imbalanced. The majority of customers repay their loans on time (target = 0), while only a small fraction default (target = 1). This imbalance is important to note because it can affect model training since models may be biased toward predicting the majority class if special care is not taken, such as using class weights or resampling techniques.
+## Examine Loan type vs default rate
+<img width="960" height="443" alt="download" src="https://github.com/user-attachments/assets/124b92b8-879f-4554-9149-b3febbded40e" />
 
-Analysis shows that default risk decreases with age.
-<br>Younger borrowers are more likely to default, while older borrowers tend to be more financially stable and reliable in meeting credit obligations.
+## Examine New vs Repeat loans
+<img width="402" height="266" alt="download" src="https://github.com/user-attachments/assets/06b3ed53-5cbf-420c-a41d-06cb6c8c9fb5" />
 
-## Engineered Risk score
-Created a risk score to estimate how risky a client is. First, I looked at key indicators like **debt levels**, **loan size compared to income**, **employment stability**, and **past loan rejections**. 
-<br>For each indicator, I marked whether it was risky or not. 
-<br>Then, I added up these marks to get a total risk score. 
-<br>Finally, I converted this score into a simple risk level category—like ;
-<br>GOOD,
-<br>MEDIUM, 
-<br>HIGH, 
-<br>VERY HIGH, 
-<br>or EXTREME ,so it’s easy to understand and use in decisions.
-<br>For example, a client with low Debt to Income ratio (DIT), stable employment, and no past rejections would be classified as GOOD risk. On the other hand, a client with high DIT, low job stability, and several past rejections would be EXTREME risk.
+## Feature Engineering
 
+Engineered business driven features to capture borrower behavior, loan structure, and repayment risk.
 
-I have created a function called  calculate_risk_level  in the notebook to test the risk score
-## Example 1
-print(calculate_risk_level(dti=0.15, credit_annuity=0.2, employment=10, rejections=0))
-### Output: 'GOOD'
+* **Customer-Level Aggregates:**
+  Computed each customer’s mean and median repayment amounts to summarize their typical loan burden and historical behavior.
 
-## Example 2
-print(calculate_risk_level(dti=0.35, credit_annuity=0.25, employment=1, rejections=9))
-### Output: 'EXTREME'
+* **Temporal Features:**
+  Extracted loan dates into year, month, day, and weekday, and calculated loan term (in days) to capture seasonal patterns, duration risk, and timing effects.
 
+* **Financial Ratios & Transformations:**
+  Created repayment ratios, daily repayment burden, and applied log transformations to normalize skewed financial variables and improve model stability.
 
+* **Behavioral Deviations:**
+  Measured how each loan compares to a customer’s historical average to detect unusually risky borrowing behavior.
 
+* **Engineered Risk Score:**
+  Built a transparent, rule-based risk scoring system using financial stress indicators, loan characteristics, and customer status, mapping borrowers into intuitive tiers: **GOOD, MEDIUM, HIGH, VERY HIGH, EXTREME**.
 
+These features significantly improved model performance while ensuring interpretability for business and stakeholder use.
+
+## Modelling
+| Fold        | Default Precision | Default Recall | Default F1 | ROC-AUC    | PR-AUC     |
+| ----------- | ----------------- | -------------- | ---------- | ---------- | ---------- |
+| 1           | 0.66              | 0.83           | 0.74       | 0.9924     | 0.8568     |
+| 2           | 0.74              | 0.78           | 0.76       | 0.9949     | 0.8561     |
+| 3           | 0.72              | 0.80           | 0.75       | 0.9905     | 0.8452     |
+| 4           | 0.71              | 0.81           | 0.75       | 0.9942     | 0.8783     |
+| **Average** | **0.71**          | **0.81**       | **0.75**   | **0.9930** | **0.8591** |
+
+## Deployment
+The final model was deployed using Streamlit to provide a simple, interactive web application for real-time credit risk assessment at the individual customer level.
+
+Key deployment features:
+
+Users input borrower and loan details manually (no CSV upload required).
+
+The app preprocesses inputs using the same feature engineering pipeline as training.
+
+The trained model generates a default probability and assigns a risk tier (GOOD → EXTREME).
+
+Results are displayed instantly, making the tool suitable for loan officers, risk analysts, and decision-makers.
+
+This deployment demonstrates how machine learning can be translated into a practical, business-ready decision support system, bridging data science and real-world credit operations.
+## How to use this Project
+* Clone this Repo.
+* Launch the App
+* Run the Streamlit app from your terminal: streamlit run my_app.py
+* Input Borrower Details:<br>
+Enter individual customer loan and personal information in the input fields, such as:<br>
+Loan amount, repayment amount, loan term<br>
+Disbursement and due dates<br>
+New or repeat customer<br>
+Any other required financial metrics<br>
+
+* View Predictions
+
+* The app calculates the probability of default for the customer.
+
+* It assigns a risk tier (GOOD, MEDIUM, HIGH, VERY HIGH, EXTREME) based on the engineered risk score.
+
+* Make Decisions
+Use the probability and risk tier to:<br>
+Approve or reject loans<br>
+Adjust interest rates or repayment schedules<br>
+Identify high-risk customers for closer monitoring<br>
+
+* For New Customers
+You can enter values manually and instantly get the predicted risk, without needing historical data files.
+## Contact
+For any inquiries please contact me through email: samkemboi201@gmail.com
