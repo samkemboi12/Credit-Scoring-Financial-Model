@@ -104,13 +104,10 @@ Results are displayed instantly, making the tool suitable for loan officers, ris
 
 This deployment demonstrates how machine learning can be translated into a practical, business-ready decision support system, bridging data science and real-world credit operations.
 ## How to use this Project
-Clone this Repo.
-Launch the App
-Run the Streamlit app from your terminal:
-
-streamlit run my_app.py
-
-Input Borrower Details
+* Clone this Repo.
+* Launch the App
+* Run the Streamlit app from your terminal: streamlit run my_app.py
+*Input Borrower Details
 Enter individual customer loan and personal information in the input fields, such as:
 
 Loan amount, repayment amount, loan term
@@ -121,20 +118,19 @@ New or repeat customer
 
 Any other required financial metrics
 
-View Predictions
+* View Predictions
 
-The app calculates the probability of default for the customer.
+* The app calculates the probability of default for the customer.
 
-It assigns a risk tier (GOOD, MEDIUM, HIGH, VERY HIGH, EXTREME) based on the engineered risk score.
+* It assigns a risk tier (GOOD, MEDIUM, HIGH, VERY HIGH, EXTREME) based on the engineered risk score.
 
-Make Decisions
-Use the probability and risk tier to:
+* Make Decisions
+Use the probability and risk tier to:<br>
+Approve or reject loans<br>
+Adjust interest rates or repayment schedules<br>
+Identify high-risk customers for closer monitoring<br>
 
-Approve or reject loans
-
-Adjust interest rates or repayment schedules
-
-Identify high-risk customers for closer monitoring
-
-For New Customers
+* For New Customers
 You can enter values manually and instantly get the predicted risk, without needing historical data files.
+## Contact
+For any inquiries please contact me through email: samkemboi201@gmail.com
