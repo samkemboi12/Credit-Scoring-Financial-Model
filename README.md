@@ -107,7 +107,7 @@ This deployment demonstrates how machine learning can be translated into a pract
 * Clone this Repo.
 * Launch the App
 * Run the Streamlit app from your terminal: streamlit run my_app.py
-*Input Borrower Details:<br>
+* Input Borrower Details:<br>
 Enter individual customer loan and personal information in the input fields, such as:<br>
 Loan amount, repayment amount, loan term<br>
 Disbursement and due dates<br>
