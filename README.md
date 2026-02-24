@@ -1,7 +1,8 @@
-# Credit-Scoring-Financial-Model
+# Credit-Scoring-Financial-Model 
 This is a project that deals with risk management in financial institutions regarding lending to its customers. It develops a credit scoring system that predicts whether a customer will default a loan. It ensures profitability since banks make informed lending decisions improving profitability and reducing financial losses.
 
 This project covers data preprocessing, feature engineering, model training, hyperparameter tuning, ensemble learning, evaluation, and live deployment via Streamlit.
+[Test Model in App/Live Demo](https://credit-scoring-financial-model.streamlit.app/)
 
 # Business Understanding
 Financial institutions, such as banks and microfinance organizations, regularly face the challenge of lending money to customers while minimizing the risk of loan defaults. Every loan carries a certain level of risk: some customers repay on time, while others may default due to financial constraints, poor credit history, or unforeseen circumstances. Efficiently managing this risk is critical for the profitability and sustainability of the institution. Credit scoring is all about assessing the creditworthiness of loan applicants. The goal is to predict the likelihood that a customer or a business will default on a loan so that the bank can make informed lending decisions.
